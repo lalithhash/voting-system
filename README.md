@@ -1,1 +1,1 @@
-install flask and SQLALchemy
+install flask and SQLAlchemy
