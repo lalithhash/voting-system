@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <h3>Admin Panel</h3>
+    </div>
+    <div class="card-body">
+        <h4>Add New Post</h4>
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Post Name</label>
+                <input type="text" name="post_name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Candidates (one per line)</label>
+                <textarea name="candidates" class="form-control" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Post</button>
+        </form>
+
+        <hr>
+        
+        <h4 class="mt-4">Existing Posts</h4>
+        {% for post in posts %}
+        <div class="card mt-3">
+            <div class="card-header">{{ post.name }}</div>
+            <div class="card-body">
+                <h5>Candidates:</h5>
+                <ul>
+                    {% for candidate in post.candidates %}
+                    <li>{{ candidate.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
